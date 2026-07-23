@@ -273,7 +273,7 @@ applyTheme(localStorage.getItem(LS.theme) ||
 async function ensureDoc(){
   if(pdfDoc) return pdfDoc;
   showStatus('Memuat novel…', true);
-  pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
+  pdfDoc = await pdfjsLib.getDocument({url: PDF_URL}).promise;
   $('pageCount').textContent = pdfDoc.numPages;
   $('pageInput').max = pdfDoc.numPages;
   hideStatus();
