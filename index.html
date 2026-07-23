@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Graf Sunyi: Misteri Desa Wanaseta — Andika Arisetyawan</title>
+<meta name="description" content="Graf Sunyi: Misteri Desa Wanaseta — novel misteri sains karya Andika Arisetyawan. Baca langsung di browser.">
+<meta property="og:title" content="Graf Sunyi: Misteri Desa Wanaseta">
+<meta property="og:description" content="Novel misteri sains karya Andika Arisetyawan. Baca langsung di browser.">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://andikaarisetyawan.com/novel_1/">
+<meta name="theme-color" content="#10141c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='7' cy='9' r='3.4' fill='%23d9a441'/%3E%3Ccircle cx='24' cy='6' r='2.6' fill='%23d9a441'/%3E%3Ccircle cx='25' cy='23' r='3.4' fill='%23d9a441'/%3E%3Ccircle cx='9' cy='25' r='2.6' fill='%23d9a441'/%3E%3Cpath d='M7 9 24 6M7 9l18 14M24 6l1 17M9 25l16-2M7 9l2 16' stroke='%23d9a441' stroke-width='1.2' fill='none' opacity='.6'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f4f1ea; --surface:#ffffff; --ink:#1d232e; --muted:#68707e;
+  --accent:#b07818; --accent-ink:#ffffff; --line:#ddd6c8;
+  --toolbar-bg:rgba(250,248,243,.92); --page-shadow:0 6px 24px rgba(20,24,32,.18);
+  --mark:#ffd34d;
+}
+body.dark{
+  --bg:#10141c; --surface:#171c26; --ink:#e6e2d8; --muted:#8b93a3;
+  --accent:#d9a441; --accent-ink:#161006; --line:#2a3140;
+  --toolbar-bg:rgba(16,20,28,.92); --page-shadow:0 6px 24px rgba(0,0,0,.55);
+  --mark:#b8860b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;
+  -webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s;
+}
+button{font:inherit;cursor:pointer}
+.hidden{display:none !important}
+
+/* ---------- Sampul ---------- */
+#cover{
+  min-height:100dvh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center;
+  padding:2rem 1.25rem; position:relative; overflow:hidden;
+}
+#cover .graf-bg{
+  position:absolute; inset:0; opacity:.14; pointer-events:none;
+}
+#cover .kicker{
+  font-family:system-ui,sans-serif; letter-spacing:.35em; text-transform:uppercase;
+  font-size:.72rem; color:var(--muted); margin:0 0 1.1rem;
+}
+#cover h1{
+  font-size:clamp(2.2rem,7vw,4rem); line-height:1.05; margin:0;
+  font-weight:400; letter-spacing:.01em;
+}
+#cover h1 .sub{
+  display:block; font-size:clamp(1rem,3vw,1.5rem); color:var(--muted);
+  margin-top:.65rem; font-style:italic; letter-spacing:.05em;
+}
+#cover .rule{
+  width:64px; height:2px; background:var(--accent); border:0; margin:1.6rem auto;
+}
+#cover .author{
+  font-family:system-ui,sans-serif; letter-spacing:.22em; text-transform:uppercase;
+  font-size:.85rem; margin:0 0 2.4rem;
+}
+#cover .actions{display:flex; flex-direction:column; gap:.7rem; width:min(320px,100%)}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.8rem 1.4rem; border-radius:10px; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink); font-family:system-ui,sans-serif;
+  font-size:.95rem; transition:transform .12s,box-shadow .12s;
+}
+.btn:hover{transform:translateY(-1px); box-shadow:0 3px 12px rgba(0,0,0,.12)}
+.btn-primary{background:var(--accent); color:var(--accent-ink); border-color:transparent; font-weight:600}
+#cover .note{font-family:system-ui,sans-serif; font-size:.78rem; color:var(--muted); margin-top:2rem}
+.theme-btn{
+  position:absolute; top:max(1rem,env(safe-area-inset-top)); right:1rem;
+  width:42px; height:42px; border-radius:50%; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink); font-size:1.1rem; line-height:1;
+}
+
+/* ---------- Reader ---------- */
+#reader{height:100dvh; display:flex; flex-direction:column}
+#toolbar{
+  display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;
+  padding:.45rem .6rem; padding-top:max(.45rem,env(safe-area-inset-top));
+  background:var(--toolbar-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line); font-family:system-ui,sans-serif;
+  position:sticky; top:0; z-index:10;
+}
+#toolbar .grow{flex:1}
+.tb{
+  min-width:38px; height:38px; padding:0 .55rem; border-radius:8px;
+  border:1px solid transparent; background:transparent; color:var(--ink);
+  font-size:1rem; display:inline-flex; align-items:center; justify-content:center;
+}
+.tb:hover{background:var(--line)}
+.tb:disabled{opacity:.35; cursor:default; background:transparent}
+#pageBox{display:flex; align-items:center; gap:.3rem; font-size:.9rem; color:var(--muted)}
+#pageInput{
+  width:3.2em; height:34px; text-align:center; border:1px solid var(--line);
+  border-radius:8px; background:var(--surface); color:var(--ink); font:inherit;
+}
+#zoomLabel{font-size:.82rem; color:var(--muted); min-width:3.2em; text-align:center}
+#searchBar{
+  display:flex; align-items:center; gap:.35rem; padding:.45rem .6rem;
+  background:var(--toolbar-bg); border-bottom:1px solid var(--line);
+  font-family:system-ui,sans-serif; position:sticky; z-index:9;
+}
+#searchInput{
+  flex:1; min-width:0; height:38px; padding:0 .7rem; border-radius:8px;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit;
+}
+#searchCount{font-size:.82rem; color:var(--muted); white-space:nowrap}
+#viewerScroll{flex:1; overflow:auto; padding:1rem; -webkit-overflow-scrolling:touch}
+#pageHolder{
+  position:relative; margin:0 auto; width:fit-content;
+  box-shadow:var(--page-shadow); border-radius:2px; background:#fff;
+  --user-unit:1; --total-scale-factor:calc(var(--scale-factor) * var(--user-unit));
+  --scale-round-x:1px; --scale-round-y:1px;
+}
+#pdfCanvas{display:block; border-radius:2px}
+body.dark #pdfCanvas{filter:invert(.93) hue-rotate(180deg)}
+#status{
+  position:fixed; left:50%; bottom:1.2rem; transform:translateX(-50%);
+  background:var(--surface); border:1px solid var(--line); color:var(--muted);
+  padding:.5rem 1rem; border-radius:99px; font-family:system-ui,sans-serif;
+  font-size:.85rem; box-shadow:0 4px 16px rgba(0,0,0,.2); z-index:20;
+}
+
+/* ---------- Text layer (dari pdf_viewer.css, diringkas) ---------- */
+.textLayer{
+  color-scheme:only light; position:absolute; text-align:initial; inset:0;
+  overflow:clip; opacity:1; line-height:1; letter-spacing:normal; word-spacing:normal;
+  text-size-adjust:none; forced-color-adjust:none; transform-origin:0 0;
+  caret-color:CanvasText; z-index:1;
+  --min-font-size:1;
+  --text-scale-factor:calc(var(--total-scale-factor) * var(--min-font-size));
+  --min-font-size-inv:calc(1 / var(--min-font-size));
+}
+.textLayer :is(span,br){
+  color:transparent; position:absolute; white-space:pre; cursor:text;
+  transform-origin:0% 0%; user-select:text;
+}
+.textLayer > :not(.markedContent),
+.textLayer .markedContent span:not(.markedContent){
+  z-index:1; --font-height:0;
+  font-size:calc(var(--text-scale-factor) * var(--font-height));
+  --scale-x:1; --rotate:0deg;
+  transform:rotate(var(--rotate)) scaleX(var(--scale-x)) scale(var(--min-font-size-inv));
+}
+.textLayer .markedContent{display:contents}
+.textLayer ::selection{background:rgba(0,90,255,.25); color:transparent}
+.textLayer mark{
+  color:transparent; background:var(--mark); opacity:.55;
+  border-radius:2px; padding:1px 0; margin:-1px 0;
+}
+.textLayer mark.current{outline:2px solid var(--accent); opacity:.8}
+body.dark .textLayer mark{opacity:.45}
+
+@media (max-width:520px){
+  #viewerScroll{padding:.5rem}
+  #zoomLabel{display:none}
+  .btn{padding:.75rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ SAMPUL ============ -->
+<section id="cover">
+  <svg class="graf-bg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1" fill="none">
+      <path d="M120 90 340 60M340 60 520 180M520 180 700 110M120 90 210 320M210 320 520 180M210 320 130 520M130 520 420 480M420 480 520 180M420 480 690 540M690 540 700 110M340 60 210 320M690 540 520 180"/>
+    </g>
+    <g fill="currentColor">
+      <circle cx="120" cy="90" r="7"/><circle cx="340" cy="60" r="5"/>
+      <circle cx="520" cy="180" r="9"/><circle cx="700" cy="110" r="5"/>
+      <circle cx="210" cy="320" r="7"/><circle cx="130" cy="520" r="5"/>
+      <circle cx="420" cy="480" r="7"/><circle cx="690" cy="540" r="5"/>
+    </g>
+  </svg>
+  <button id="coverThemeBtn" class="theme-btn" title="Mode gelap/terang" aria-label="Ganti tema">◐</button>
+  <p class="kicker">Novel Misteri Sains</p>
+  <h1>Graf Sunyi<span class="sub">Misteri Desa Wanaseta</span></h1>
+  <hr class="rule">
+  <p class="author">Andika Arisetyawan</p>
+  <div class="actions">
+    <button id="resumeBtn" class="btn btn-primary hidden"></button>
+    <button id="startBtn" class="btn btn-primary">Mulai Baca</button>
+    <a class="btn" href="Graf_Sunyi_Misteri_Desa_Wanaseta.pdf" download>Unduh PDF</a>
+  </div>
+  <p class="note">Dibaca langsung di browser · tanpa koneksi setelah dimuat</p>
+</section>
+
+<!-- ============ READER ============ -->
+<section id="reader" class="hidden">
+  <div id="toolbar">
+    <button class="tb" id="homeBtn" title="Kembali ke sampul">⌂</button>
+    <button class="tb" id="prevBtn" title="Halaman sebelumnya">‹</button>
+    <span id="pageBox">
+      <input id="pageInput" type="number" min="1" value="1" inputmode="numeric">
+      <span>/ <span id="pageCount">–</span></span>
+    </span>
+    <button class="tb" id="nextBtn" title="Halaman berikutnya">›</button>
+    <span class="grow"></span>
+    <button class="tb" id="zoomOutBtn" title="Perkecil">−</button>
+    <span id="zoomLabel">100%</span>
+    <button class="tb" id="zoomInBtn" title="Perbesar">+</button>
+    <button class="tb" id="fitBtn" title="Pas lebar layar">⤢</button>
+    <button class="tb" id="searchToggle" title="Cari teks">🔍</button>
+    <button class="tb" id="themeBtn" title="Mode gelap/terang">◐</button>
+  </div>
+  <div id="searchBar" class="hidden">
+    <input id="searchInput" type="search" placeholder="Cari di dalam novel…" autocomplete="off">
+    <span id="searchCount"></span>
+    <button class="tb" id="searchPrev" title="Hasil sebelumnya">↑</button>
+    <button class="tb" id="searchNext" title="Hasil berikutnya">↓</button>
+    <button class="tb" id="searchClose" title="Tutup pencarian">✕</button>
+  </div>
+  <div id="viewerScroll">
+    <div id="pageHolder">
+      <canvas id="pdfCanvas"></canvas>
+      <div id="textLayer" class="textLayer"></div>
+    </div>
+  </div>
+</section>
+
+<div id="status" class="hidden"></div>
+
+<script type="module">
+import * as pdfjsLib from './pdfjs/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = './pdfjs/pdf.worker.mjs';
+
+const PDF_URL = 'Graf_Sunyi_Misteri_Desa_Wanaseta.pdf';
+const LS = { page:'grafsunyi:page', zoom:'grafsunyi:zoom', theme:'grafsunyi:theme' };
+
+const $ = id => document.getElementById(id);
+const cover = $('cover'), reader = $('reader'), statusEl = $('status');
+const canvas = $('pdfCanvas'), ctx = canvas.getContext('2d');
+const textLayerDiv = $('textLayer'), pageHolder = $('pageHolder');
+const viewerScroll = $('viewerScroll');
+
+let pdfDoc = null, pageNum = 1, zoom = 1;
+let rendering = false, pendingPage = null;
+let textCache = null;                    // teks per halaman utk pencarian
+let matches = [], matchIdx = -1, query = '';
+
+/* ---------- util ---------- */
+let statusTimer;
+function showStatus(msg, sticky=false){
+  statusEl.textContent = msg;
+  statusEl.classList.remove('hidden');
+  clearTimeout(statusTimer);
+  if(!sticky) statusTimer = setTimeout(()=>statusEl.classList.add('hidden'), 2200);
+}
+function hideStatus(){ clearTimeout(statusTimer); statusEl.classList.add('hidden'); }
+
+/* ---------- tema ---------- */
+function applyTheme(t){
+  document.body.classList.toggle('dark', t==='dark');
+  localStorage.setItem(LS.theme, t);
+}
+function toggleTheme(){
+  applyTheme(document.body.classList.contains('dark') ? 'light' : 'dark');
+}
+$('themeBtn').onclick = toggleTheme;
+$('coverThemeBtn').onclick = toggleTheme;
+applyTheme(localStorage.getItem(LS.theme) ||
+  (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+/* ---------- muat dokumen ---------- */
+async function ensureDoc(){
+  if(pdfDoc) return pdfDoc;
+  showStatus('Memuat novel…', true);
+  pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
+  $('pageCount').textContent = pdfDoc.numPages;
+  $('pageInput').max = pdfDoc.numPages;
+  hideStatus();
+  return pdfDoc;
+}
+
+/* ---------- render halaman ---------- */
+async function renderPage(num){
+  if(rendering){ pendingPage = num; return; }
+  rendering = true;
+  try{
+    const page = await pdfDoc.getPage(num);
+    const base = page.getViewport({scale:1});
+    const avail = viewerScroll.clientWidth -
+      2*parseFloat(getComputedStyle(viewerScroll).paddingLeft);
+    const cssScale = Math.max(0.2, (avail / base.width) * zoom);
+    const viewport = page.getViewport({scale: cssScale});
+    const dpr = window.devicePixelRatio || 1;
+    const rv = page.getViewport({scale: cssScale * dpr});
+
+    canvas.width = Math.floor(rv.width);
+    canvas.height = Math.floor(rv.height);
+    canvas.style.width = Math.floor(viewport.width) + 'px';
+    canvas.style.height = Math.floor(viewport.height) + 'px';
+    await page.render({canvasContext: ctx, viewport: rv}).promise;
+
+    textLayerDiv.textContent = '';
+    pageHolder.style.setProperty('--scale-factor', viewport.scale);
+    const tl = new pdfjsLib.TextLayer({
+      textContentSource: page.streamTextContent(),
+      container: textLayerDiv,
+      viewport
+    });
+    await tl.render();
+
+    pageNum = num;
+    $('pageInput').value = num;
+    $('prevBtn').disabled = num <= 1;
+    $('nextBtn').disabled = num >= pdfDoc.numPages;
+    $('zoomLabel').textContent = Math.round(zoom*100) + '%';
+    localStorage.setItem(LS.page, String(num));
+    localStorage.setItem(LS.zoom, String(zoom));
+    if(query) highlightPage();
+  } catch(e){
+    console.error(e);
+    showStatus('Gagal menampilkan halaman: ' + e.message);
+  } finally {
+    rendering = false;
+    if(pendingPage !== null){ const p = pendingPage; pendingPage = null; renderPage(p); }
+  }
+}
+function gotoPage(n){
+  if(!pdfDoc) return;
+  n = Math.min(Math.max(1, n), pdfDoc.numPages);
+  viewerScroll.scrollTop = 0;
+  renderPage(n);
+}
+
+/* ---------- navigasi & zoom ---------- */
+$('prevBtn').onclick = ()=>gotoPage(pageNum-1);
+$('nextBtn').onclick = ()=>gotoPage(pageNum+1);
+$('pageInput').onchange = e=>gotoPage(parseInt(e.target.value,10) || 1);
+$('zoomInBtn').onclick = ()=>{ zoom = Math.min(3, +(zoom*1.2).toFixed(2)); renderPage(pageNum); };
+$('zoomOutBtn').onclick = ()=>{ zoom = Math.max(0.4, +(zoom/1.2).toFixed(2)); renderPage(pageNum); };
+$('fitBtn').onclick = ()=>{ zoom = 1; renderPage(pageNum); };
+$('homeBtn').onclick = ()=>{ reader.classList.add('hidden'); cover.classList.remove('hidden'); setupResume(); };
+
+document.addEventListener('keydown', e=>{
+  if(reader.classList.contains('hidden')) return;
+  if(e.target.tagName === 'INPUT') return;
+  if(e.key==='ArrowLeft' || e.key==='PageUp'){ e.preventDefault(); gotoPage(pageNum-1); }
+  else if(e.key==='ArrowRight' || e.key==='PageDown'){ e.preventDefault(); gotoPage(pageNum+1); }
+  else if((e.ctrlKey||e.metaKey) && e.key==='f'){ e.preventDefault(); openSearch(); }
+});
+
+/* geser (swipe) di layar sentuh, hanya saat pas-lebar */
+let tX=null, tY=null;
+viewerScroll.addEventListener('touchstart', e=>{
+  if(e.touches.length!==1) return;
+  tX = e.touches[0].clientX; tY = e.touches[0].clientY;
+},{passive:true});
+viewerScroll.addEventListener('touchend', e=>{
+  if(tX===null || zoom>1.01) { tX=null; return; }
+  const dx = e.changedTouches[0].clientX - tX;
+  const dy = e.changedTouches[0].clientY - tY;
+  if(Math.abs(dx)>60 && Math.abs(dx)>2*Math.abs(dy)) gotoPage(pageNum + (dx<0?1:-1));
+  tX = null;
+},{passive:true});
+
+let resizeTimer;
+addEventListener('resize', ()=>{
+  if(reader.classList.contains('hidden') || !pdfDoc) return;
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(()=>renderPage(pageNum), 200);
+});
+
+/* ---------- pencarian ---------- */
+function openSearch(){
+  $('searchBar').classList.remove('hidden');
+  $('searchInput').focus();
+}
+function closeSearch(){
+  $('searchBar').classList.add('hidden');
+  query=''; matches=[]; matchIdx=-1;
+  $('searchCount').textContent='';
+  textLayerDiv.querySelectorAll('mark').forEach(m=>{
+    m.replaceWith(document.createTextNode(m.textContent));
+  });
+  textLayerDiv.normalize?.();
+}
+$('searchToggle').onclick = ()=>{
+  $('searchBar').classList.contains('hidden') ? openSearch() : closeSearch();
+};
+$('searchClose').onclick = closeSearch;
+
+async function buildTextCache(){
+  if(textCache) return textCache;
+  showStatus('Mengindeks teks…', true);
+  textCache = [];
+  for(let i=1;i<=pdfDoc.numPages;i++){
+    const page = await pdfDoc.getPage(i);
+    const tc = await page.getTextContent();
+    textCache[i] = tc.items.map(it=>it.str).join(' ');
+  }
+  hideStatus();
+  return textCache;
+}
+const escRe = s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+
+async function runSearch(){
+  const q = $('searchInput').value.trim();
+  if(q.length < 2){ showStatus('Ketik minimal 2 karakter'); return; }
+  await buildTextCache();
+  query = q; matches = [];
+  const re = new RegExp(escRe(q),'gi');
+  for(let p=1;p<=pdfDoc.numPages;p++){
+    const hits = textCache[p].match(re);
+    if(hits) for(let k=0;k<hits.length;k++) matches.push(p);
+  }
+  if(!matches.length){
+    matchIdx=-1; $('searchCount').textContent='0 hasil';
+    showStatus(`"${q}" tidak ditemukan`);
+    return;
+  }
+  matchIdx = matches.findIndex(p=>p>=pageNum);
+  if(matchIdx<0) matchIdx = 0;
+  gotoMatch(matchIdx);
+}
+function gotoMatch(i){
+  matchIdx = (i + matches.length) % matches.length;
+  $('searchCount').textContent = `${matchIdx+1}/${matches.length}`;
+  const target = matches[matchIdx];
+  if(target !== pageNum) gotoPage(target); else highlightPage();
+}
+function currentOccurrence(){
+  let n = 0;
+  for(let k=0;k<matchIdx;k++) if(matches[k]===matches[matchIdx]) n++;
+  return n;
+}
+$('searchInput').addEventListener('keydown', e=>{
+  if(e.key==='Enter'){ e.preventDefault(); e.shiftKey ? stepMatch(-1) : (matches.length && query===$('searchInput').value.trim() ? stepMatch(1) : runSearch()); }
+  if(e.key==='Escape') closeSearch();
+});
+function stepMatch(d){ if(matches.length) gotoMatch(matchIdx+d); }
+$('searchNext').onclick = ()=>stepMatch(1);
+$('searchPrev').onclick = ()=>stepMatch(-1);
+
+function highlightPage(){
+  if(!query) return;
+  const re = new RegExp(escRe(query),'gi');
+  const marks = [];
+  for(const span of textLayerDiv.querySelectorAll(':scope > span, .markedContent > span')){
+    const text = span.textContent;
+    if(!re.test(text)) { re.lastIndex=0; continue; }
+    re.lastIndex = 0;
+    const frag = document.createDocumentFragment();
+    let last = 0, m;
+    while((m = re.exec(text))){
+      frag.append(text.slice(last, m.index));
+      const mark = document.createElement('mark');
+      mark.textContent = m[0];
+      frag.append(mark);
+      marks.push(mark);
+      last = m.index + m[0].length;
+    }
+    frag.append(text.slice(last));
+    span.textContent = '';
+    span.append(frag);
+  }
+  const cur = marks[Math.min(currentOccurrence(), marks.length-1)];
+  if(cur){
+    cur.classList.add('current');
+    cur.scrollIntoView({block:'center', behavior:'smooth'});
+  }
+}
+
+/* ---------- sampul & posisi baca ---------- */
+function setupResume(){
+  const saved = parseInt(localStorage.getItem(LS.page)||'0',10);
+  const btn = $('resumeBtn');
+  if(saved > 1){
+    btn.textContent = `Lanjut Baca — hlm. ${saved}`;
+    btn.classList.remove('hidden');
+    $('startBtn').classList.remove('btn-primary');
+    btn.onclick = ()=>openReader(saved);
+  } else {
+    btn.classList.add('hidden');
+    $('startBtn').classList.add('btn-primary');
+  }
+}
+async function openReader(page){
+  cover.classList.add('hidden');
+  reader.classList.remove('hidden');
+  try{
+    await ensureDoc();
+    zoom = parseFloat(localStorage.getItem(LS.zoom)) || 1;
+    gotoPage(page);
+  } catch(e){
+    console.error(e);
+    showStatus('Gagal memuat PDF: ' + e.message, true);
+  }
+}
+$('startBtn').onclick = ()=>openReader(1);
+setupResume();
+</script>
+</body>
+</html>
